@@ -1,6 +1,7 @@
+import { Ionicons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
 import { useRouter } from "expo-router";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 export default function CustomDrawer(props) {
     const router = useRouter();
@@ -10,17 +11,22 @@ export default function CustomDrawer(props) {
            
             <DrawerContentScrollView {...props}>
                  <View style={styles.header}>
-                <Image 
-                    style={styles.image} 
-                    source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/640px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg' }} 
-                />
+                 <View style={styles.profilePic}>
+                    <Text style={styles.profilePicText}>ZM</Text>
+                </View>
+                <Text style={{fontFamily:'Poppins',fontSize:30,color:'#808080'}}>
+                    Bilal korchi
+                </Text>
             </View>
                 <DrawerItemList  {...props} />
-                <DrawerItem label={'Logout'} activeBackgroundColor="#1faf73" labelStyle={{paddingLeft:20}} inactiveBackgroundColor="#1faf73" inactiveTintColor="white" onPress={() => router.replace('/')} />
             </DrawerContentScrollView>
             <View style={styles.footer}>
                 <Text style={styles.footerText}>
-                    {/* Add any footer text here */}
+<TouchableOpacity style={{padding:10 ,borderRadius:10,backgroundColor:'#f0f0f0'}} onPress={()=>router.replace('/')}>
+<Ionicons name="exit-outline" size={30}  color="#808080" />
+
+</TouchableOpacity>
+
                 </Text>
             </View>
         </View>
@@ -35,6 +41,19 @@ const styles = StyleSheet.create({
         paddingTop:20,
         paddingBottom:10
 
+    },
+    profilePic: {
+        backgroundColor: '#d9d9d9',
+        width: 80,
+        height: 80,
+        borderRadius: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    profilePicText: {
+        color: '#fff',
+        fontSize: 24,
+        fontWeight: 'bold',
     },
     image: {
         width: 150,

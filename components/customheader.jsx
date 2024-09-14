@@ -1,6 +1,6 @@
 // components/CustomHeader.js
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -9,6 +9,8 @@ export default function CustomHeader() {
 
   return (
     <View style={styles.headerContainer}>
+       <View >
+      </View>
       <TouchableOpacity onPress={() => navigation.openDrawer()}>
         <Ionicons name="menu" size={24} color="black" />
       </TouchableOpacity>
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     marginTop:10,
     justifyContent: 'space-between',
     padding: 20,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: 'white',
   },
   headerTitle: {
     fontSize: 18,

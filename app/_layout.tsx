@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Stack } from 'expo-router';
+import { SplashScreen, Stack } from 'expo-router';
 import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
+import { ToastProvider } from 'react-native-toast-notifications'
 
 export default function Layout() {
-  let [fontsLoaded] = useFonts({
-    Inter_400Regular,
-    Inter_700Bold,
-  });
+  const [fontloded,seterror]=useFonts({
+    'Poppins':require("../assets/Poppins-Bold.ttf")
+  })
 
- 
+
+
+
+
+  useEffect(()=>{
+
+
+    if(fontloded) SplashScreen.hideAsync()
+  },[fontloded])
+
+  if(!fontloded) return null
 
   return (
-      <Stack initialRouteName='index'>
+    <ToastProvider
+    
+    successColor="#1faf73"
+
+    >
+
+      <Stack initialRouteName='index' >
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-      </Stack>
+
+
+        <Stack.Screen name='(auth)' options={{headerShown:false}}/>
+
+      </Stack></ToastProvider>
   );
 }
 
